@@ -1,0 +1,335 @@
+#moduleactioninfo {
+    padding: 10px 0px;
+}
+#moduleactioninfo .info-body {
+    width: 100%;
+}
+#moduleactioninfo .notice {
+    font-size: 12px;
+    line-height: 22px;
+    margin: 0 0 10px;
+    padding: 5px 10px;
+    vertical-align: middle;
+    color: #264663;
+    border: 1px solid #7AB1DE;
+    border-radius: 2px;
+    background: #D2E7F7;
+    position: relative;
+}
+#moduleactioninfo .info-box {
+    padding: 20px;
+    background: #ffffff;
+    color: #666;
+    line-height: 2;
+    border-radius: 4px;
+    border: solid 1px #e4e4e4;
+    box-shadow: 1px 1px 22px rgba(157, 184, 209, 0.19);
+    margin: 0px 0px 30px;
+}
+#moduleactioninfo .time-box {
+    padding: 10px 20px;
+    background: #ffffff;
+    color: #666;
+    line-height: 1.5;
+    border-radius: 4px;
+    border: solid 1px #e4e4e4;
+    box-shadow: 1px 1px 22px rgba(157, 184, 209, 0.19);
+    margin-bottom: 15px;
+    margin-top: 10px;
+    min-width: 300px;
+    align-self:flex-end;
+}
+#moduleactioninfo .info-title {
+    font-size: 16px;
+    padding: 16px;
+    padding-left: 20px;
+    display: inline-block;
+}
+#moduleactioninfo .info-text {
+    font-size: 16px;
+    padding: 16px;
+    text-align: right;
+    padding-right: 20px;
+    color: #0479ec;
+    float: right;
+}
+#moduleactioninfo .time-title {
+    font-size: 16px;
+    padding-bottom: 5px;
+}
+#moduleactioninfo .time-text {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    color: #ff7200;
+}
+#moduleactioninfo .date-title {
+    font-size: 16px;
+}
+#moduleactioninfo .date-text {
+    font-size: 16px;
+    font-weight: bold;
+    float: right;
+    color: #ff7200;
+}
+#moduleactioninfo .cycle-body {
+    margin: 10px 0px;
+}
+#moduleactioninfo .cycle-title {
+    text-align: left;
+    width: 100%;
+    line-height: 1.5;
+    font-size: 15px;
+    padding-bottom: 5px;
+}
+#moduleactioninfo ul,li {
+    padding:0;
+    margin:0;
+    list-style-type:none;
+}
+#moduleactioninfo .clearfix:after {
+    display:block;
+    content:"";
+    clear:both;
+}
+#moduleactioninfo .slider-date {
+    vertical-align: middle;
+    position: relative;
+}
+#moduleactioninfo .slider-date .slider-bg li {
+    position: relative;
+    float: left;
+    width: auto;
+    min-width: 70px;
+    padding: 0px 5px;
+    margin-left: -1px;
+    border: 1px solid #DDD;
+    font-size: 12px;
+/*    height: 32px;*/
+    line-height: 32px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 100;
+    transition: all .5s;
+}
+#moduleactioninfo .slider-date .slider-bg li:hover {
+    z-index: 101;
+    border-color: #71A9E0;
+}
+#moduleactioninfo .slider-date .slider-bg .active {
+    z-index: 101;
+    border-color: #71A9E0;
+    background: #D8EBFF;
+    color: #2277da;
+}
+#moduleactioninfo .input-box {
+    border: 1px solid #dfe3e9;
+    border-radius: 4px 0px 0px 4px;
+    box-shadow: none;
+    height: 34px !important;
+}
+#moduleactioninfo .input-box:focus {
+    border: 1px solid #0479ec;
+}
+#moduleactioninfo .input-box2 {
+    border: 1px solid #dfe3e9;
+    border-radius: 4px;
+    box-shadow: none;
+}
+#moduleactioninfo .input-box2:focus {
+    border: 1px solid #0479ec;
+}
+#moduleactioninfo .input-copy {
+    max-width: 400px;
+}
+#moduleactioninfo .input-copy button {
+    padding: 6px 12px !important;
+    width: 120px;
+    height: 34px !important;
+}
+#moduleactioninfo .input-copy button span i {
+    padding-right: 3px;
+    color: #ffffff;
+}
+/* 应用优惠码 */
+#moduleactioninfo .apply-btn {
+    background: #0479ec;
+    color: #ffffff;
+    border: 1px solid #0479ec;
+    border-radius: 0px 4px 4px 0px;
+    transition: background 500ms;
+}
+#moduleactioninfo .apply-btn:hover {
+    background-color: rgb(40, 151, 255);
+    border: 1px solid rgb(40, 151, 255);
+}
+/* 取消应用优惠码 */
+#moduleactioninfo .unapply-btn {
+    background: #fa7821;
+    color: #ffffff;
+    border: 1px solid #fa7821;
+    display: none;
+    border-radius: 0px 4px 4px 0px;
+    transition: background 500ms;
+}
+#moduleactioninfo .unapply-btn:hover {
+    background-color: rgb(247, 146, 78);
+    border: 1px solid rgb(247, 146, 78);
+}
+/* 优惠码错误 */
+#moduleactioninfo .error-btn {
+    background: #fa2121;
+    color: #ffffff;
+    border: 1px solid #fa2121;
+    display: none;
+    border-radius: 0px 4px 4px 0px;
+    transition: background 500ms;
+}
+#moduleactioninfo .error-btn:hover {
+    background-color: rgb(252, 78, 78);
+    border: 1px solid rgb(252, 78, 78);
+}
+#moduleactioninfo .confirm-area {
+    display: flex;
+    flex-direction: column;
+}
+#moduleactioninfo .quantity-input {
+    max-width: 220px;
+}
+#moduleactioninfo .price-area {
+    text-align: right;
+    margin: 3px 0px;
+}
+#moduleactioninfo .old-price-title {
+    margin-top: 36px;
+    width: auto;
+    min-width: 70px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 10px;
+}
+#moduleactioninfo .old-price {
+    margin-top: 28px;
+    font-size: 25px;
+    color: #ff7200;
+    text-align: right;
+    margin-bottom: 10px;
+}
+#moduleactioninfo .price-title {
+    margin-top: 36px;
+    width: auto;
+    min-width: 70px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 15px;
+}
+#moduleactioninfo .price {
+    margin-top: 28px;
+    font-size: 35px;
+    color: #ff7200;
+    text-align: right;
+    margin-bottom: 10px;
+}
+#moduleactioninfo .code-area {
+    text-align: right;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-top: 10px;
+}
+#moduleactioninfo .code-box {
+    height: 18px;
+    padding: 5px;
+    border: solid 1px #c9ddbb;
+    background: #e4f0dc;
+    font-size: 12px;
+    line-height: 18px;
+    color: #333;
+    border-radius: 3px;
+    margin-left: 13px;
+}
+#moduleactioninfo .submit-area {
+    padding-right: 0px;
+    padding-left: 0px;
+    text-align: right;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+/* 允许提交状态 */
+#moduleactioninfo .submit-btn {
+    box-shadow: rgba(98, 129, 157, 0.4) 1px 1px 11px;
+    background-color: rgb(4, 121, 236);
+    letter-spacing: 0px;
+    border-radius: 4px;
+    padding: 10px 50px;
+    color: #FFFFFF;
+    transition: background 500ms;
+}
+#moduleactioninfo .submit-btn:hover {
+    background-color: rgb(40, 151, 255);
+}
+/* 不允许提交状态 */
+#moduleactioninfo .disubmit-btn {
+    box-shadow: rgba(98, 129, 157, 0.4) 1px 1px 11px;
+    background-color: rgb(163, 163, 163);
+    letter-spacing: 0px;
+    border-radius: 4px;
+    padding: 10px 50px;
+    color: #FFFFFF;
+    transition: background 500ms;
+}
+#moduleactioninfo .errorPriceArea {
+    color: #fa2121;
+    font-family: "Microsoft Yahei", "Hiragino Sans GB", tahoma, arial, "\5B8B\4F53", sans-serif;
+}
+#moduleactioninfo .errorPriceArea span {
+    font-size: 25px;
+}
+#moduleactioninfo .promoContents {
+    margin-left: 5px;
+}
+#moduleactioninfo .promoErrorContents {
+    margin-left: 5px;
+}
+#moduleactioninfo .apply-success {
+    color: #5cb85c;
+    display: none;
+}
+#moduleactioninfo .apply-error {
+    color: #fa2121;
+    display: none;
+}
+@media only screen and (max-width: 767px) {
+    #moduleactioninfo .info-text {
+        font-size: 15px;
+        padding: 18px;
+        text-align: right;
+        padding-right: 2px;
+        color: #0479ec;
+    }
+    #moduleactioninfo .info-title {
+        font-size: 15px;
+        padding: 18px;
+        padding-left: 0px;
+    }
+}
+@media only screen and (max-width: 320px) {
+    #moduleactioninfo .info-title {
+        font-size: 13px;
+        padding: 10px;
+        padding-left: 1px;
+    }
+    #moduleactioninfo .info-text {
+        font-size: 13px;
+        padding: 10px;
+        text-align: right;
+        padding-right: 1px;
+        color: #0479ec;
+    }
+}
+@media only screen and (max-width: 400px) {
+    #moduleactioninfo .time-box {
+        align-self: unset;
+        width: 100%;
+        min-width: unset;
+    }
+}
