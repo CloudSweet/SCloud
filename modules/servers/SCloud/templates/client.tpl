@@ -80,7 +80,7 @@
                     <div class="{if $document|@count eq 0 || $document == ""}col-sm-12{else}col-lg-8 col-md-12{/if} col-xs-12 col-12">
                         {foreach $node as $key => $value}
                             {foreach $value['nodes'] as $k => $v}
-                                <div class="node-card" id="node-{$key}">
+                                <div class="node-card" id="node-{$value["id"]}-{$v["id"]}">
                                     <div class="top-box">
                                         <div class="node-title-area col-lg-3 col-sm-5 col-xs-12 col-12">
                                             {if !empty($v["country"]|trim)}
@@ -119,9 +119,9 @@
                                         <div class="action-input">
                                             <label for=""> aaa</label>
                                             <div class="input-group">
-                                                <input id="linux-{$key}" class="form-control" value="" type="text" readonly="true">
+                                                <input id="linux-{$value["id"]}-{$v["id"]}" class="form-control" value="aaaa" type="text" readonly="true">
                                                 <span class="input-group-btn">
-                                                    <button id="linux-btn-{$key}" data-clipboard-target="#linux-{$key}" class="btn btn-primary copy-btn">复制</button>
+                                                    <button id="linux-btn-{$key}" data-clipboard-target="#linux-{$value["id"]}-{$v["id"]}" class="btn btn-primary copy-btn">复制</button>
                                                 </span>
                                             </div>
                                         </div>
