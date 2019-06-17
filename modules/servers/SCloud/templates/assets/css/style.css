@@ -1,0 +1,579 @@
+#SCloud {
+
+}
+#SCloud .notice-area {
+    margin: 5px 0px;
+}
+#SCloud .notice-box {
+    padding: 5px 10px;
+    color: #264663;
+    border: 1px solid rgb(229, 232, 235);
+    border-radius: 2px;
+    background: #FFFFFF;
+    box-shadow: 1px 1px 22px rgba(135, 164, 194, 0.19);
+}
+#SCloud .ann-text {
+    font-size: 12px;
+    line-height: 27px;
+}
+#SCloud .top-area {
+    margin: 10px 0px;
+}
+#SCloud .product-box {
+    padding: 20px;
+    position: relative;
+    border: 1px solid #e6eaee;
+    border-radius: 4px;
+    background-color: #fff;
+    height: auto;
+    transition: box-shadow .1s;
+    box-shadow: 1px 1px 22px rgba(135, 164, 194, 0.19);
+    margin-bottom: 15px;
+    height: 194px;
+}
+#SCloud .product-title {
+    font-size: 25px;
+    color: #333333;
+    display: flex;
+    align-items: center;
+    overflow: auto;
+    white-space: nowrap;
+}
+#SCloud .product-title::-webkit-scrollbar {
+    display: none;
+}
+#SCloud .product-title i {
+    color: #8BC34A;
+    padding-right: 5px;
+}
+#SCloud .product-smalltitle {
+    margin: 5px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid #e6eaee;
+    padding-bottom: 15px;
+}
+#SCloud .product-smalltitle i {
+    padding-right: 5px;
+}
+#SCloud .next-due {
+    font-size: 15px;
+    flex: 1;
+    white-space: nowrap;
+    overflow: auto;
+    margin-right: 5px;
+}
+#SCloud .next-due::-webkit-scrollbar {
+    display: none;
+}
+#SCloud .product-info {
+    margin-top: 16px;
+}
+#SCloud .product-info .info-list {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 8px;
+}
+#SCloud .product-info .info-title {
+    color: #354052;
+    font-weight: 600;
+    font-size: 15px;
+}
+#SCloud .product-info .info-title i {
+    padding-right: 5px;
+    width: 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+#SCloud .product-info .info-text {
+    flex: 1;
+    text-align: right;
+    font-size: 15px;
+}
+#SCloud .product-box.ips {
+    display: flex;
+    flex-direction: row;
+}
+#SCloud .ipset {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-right: 15px;
+    border-right: 1px solid #e6eaee;
+    margin-right: 15px;
+}
+#SCloud .currentip-area {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+}
+#SCloud .currentip-area .current-ip {
+    font-size: 14px;
+    font-weight: 600;
+    flex: 1;
+}
+#SCloud .currentip-area .action-btn {
+
+}
+#SCloud .currentip-area .action-btn button {
+    margin: 5px 0px 5px 5px;
+}
+#SCloud .inputip-area {
+    margin-bottom: 7px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #e6eaee;
+}
+#SCloud .inputip-area .input-title {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+#SCloud .inputip-area .input-title span {
+    font-size: 15px;
+    font-weight: 600;
+    flex: 1;
+    align-items: center;
+    white-space: nowrap;
+    overflow: auto;
+}
+#SCloud .inputip-area .input-title label {
+    padding: 0px 10px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: #fceed4;
+    color: #ff9900;
+    margin-bottom: 0px;
+}
+#SCloud .inputip-area .label-list {
+    margin-top: 8px;
+    overflow: auto;
+    white-space: nowrap;
+}
+#SCloud .inputip-area .label-list::-webkit-scrollbar {
+	display: none;
+}
+#SCloud .inputip-area .label-list label {
+    padding: 3px 10px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: #ddf5e0;
+    color: #11a061;
+    white-space: nowrap;
+    margin-right: 5px;
+}
+#SCloud .inputip-area .input-group input,#SCloud .inputip-area .input-group .btn {
+    height: 34px !important;
+    padding: 6px 12px !important;
+    font-size: 14px !important;
+}
+#SCloud .ip-list .ip-title {
+    padding-bottom: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid #e6eaee;
+    white-space: nowrap;
+}
+#SCloud .ip-list .ip-title span {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333333;
+    flex: 1;
+    margin-right: 20px;
+    overflow: auto;
+    white-space: nowrap;
+}
+#SCloud .ip-list .ip-title label {
+    padding: 0px 10px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: #e5f7ff;
+    color: #1a91eb;
+    margin-bottom: 0px;
+}
+#SCloud .ip-list .ip-group {
+    height: 120px;
+    overflow-y: auto;
+    border-radius: 4px;
+}
+#SCloud .ip-list .ip-group::-webkit-scrollbar {
+	display: none;
+}
+#SCloud .ip-list .ip-group .no-ip {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    height: 100%;
+}
+#SCloud .ip-list .ip-group .no-ip a {
+    cursor: pointer;
+}
+#SCloud .ip-list .ipaddress {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e6eaee;
+    padding: 0px 5px 10px;
+}
+#SCloud .ip-list .ipaddress:first-child {
+    margin-top: 10px;
+}
+#SCloud .ip-list .ipaddress:last-child {
+    margin-bottom: 0px;
+}
+#SCloud .ip-list .ipaddress span {
+    font-size: 12px;
+    flex: 1;
+    padding-right: 5px;
+}
+#SCloud .ip-list .ipaddress button {
+
+}
+#SCloud .node-area {
+
+}
+#SCloud .node-area .node-card {
+    width: 100%;
+    border: 1px solid #e6eaee;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: all .3s;
+    box-shadow: 1px 1px 22px rgba(135, 164, 194, 0.19);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+#SCloud .node-area .node-card .top-box {
+    border-bottom: 1px dotted #e6e6e6;
+}
+#SCloud .node-area .node-card .node-title-area {
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 52px;
+}
+#SCloud .node-area .node-card .top-box .node-flag {
+    min-width: 25px;
+    height: auto;
+}
+#SCloud .node-area .node-card .top-box .node-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a91eb;
+    margin-left: 10px;
+    white-space: nowrap;
+    overflow: auto;
+}
+#SCloud .node-area .node-card .top-box .node-name::-webkit-scrollbar {
+    display: none;
+}
+#SCloud .node-area .node-card .top-box .node-address-area {
+    padding: 5px 10px;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 52px;
+}
+#SCloud .node-area .node-card .top-box .node-address-area .ip-address {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#SCloud .node-area .node-card .top-box .node-address-area .ip-address a {
+    color: #a3a3a3;
+    overflow: auto;
+    white-space: nowrap;
+}
+#SCloud .node-area .node-card .top-box .node-address-area .ip-address a::-webkit-scrollbar {
+    display: none;
+}
+#SCloud .node-area .node-card .top-box .node-address-area .ip-address a:hover {
+    text-decoration: none;
+}
+#SCloud .node-area .node-card .top-box .node-address-area span {
+    color: #333333;
+    padding-right: 8px;
+}
+#SCloud .node-area .node-card .top-box .node-address-area i {
+    cursor: pointer;
+    color: #ababab !important;
+    margin-left: 10px;
+}
+#SCloud .node-area .node-card .top-box .node-desc-area {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+    height: 52px;
+}
+#SCloud .node-area .node-card .top-box .node-desc-area span {
+    font-size: 7px;
+    color: #333333;
+    padding-right: 8px;
+    font-weight: 600;
+}
+#SCloud .node-area .node-card .top-box .node-desc-area .node-desc label {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: #ddf5e0;
+    color: #11a061;
+    transition: all .3s;
+    padding: 2px 5px;
+    margin-bottom: 0px;
+}
+#SCloud .node-area .node-card .top-box .node-bandwidth-area {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 52px;
+}
+#SCloud .node-area .node-card .top-box .node-bandwidth-area span {
+    font-size: 7px;
+    color: #333333;
+    padding-right: 8px;
+    font-weight: 600;
+}
+#SCloud .node-area .node-card .top-box .node-bandwidth-area .node-bandwidth {
+    color: #ff0000;
+    font-size: 15px;
+}
+#SCloud .node-area .node-card .bottom-box {
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+}
+#SCloud .node-area .node-card .bottom-box .node-tag-area {
+    display: flex;
+    flex: 1;
+    overflow: auto;
+}
+#SCloud .node-area .node-card .bottom-box .node-tag-area .node-tag {
+    display: inline-block;
+    flex: 1;
+    white-space: nowrap;
+    overflow: auto;
+}
+#SCloud .node-area .node-card .bottom-box .node-tag-area .node-tag::-webkit-scrollbar {
+    display: none;
+}
+#SCloud .node-area .node-card .bottom-box .node-tag-area .node-tag label {
+    padding: 0px 10px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: #e5f7ff;
+    color: #1a91eb;
+    margin-right: 3px;
+    margin-bottom: 0px;
+}
+#SCloud .node-area .node-card .bottom-box .node-open-action {
+    flex: 0;
+    margin-left: 5px;
+}
+#SCloud .node-area .node-card .bottom-box .node-open-action .btn-open-action {
+    border: 1px solid #1a91eb;
+    color: #1a91eb;
+    transition: all .3s;
+    background-color: #ffffff;
+    padding: 3px 9px;
+    font-size: 12px;
+}
+#SCloud .node-area .node-card .bottom-box .node-open-action .btn-open-action i.rotate {
+    color: #1a91eb;
+    transform-origin: center center;
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transition: transform 0.2s;
+    -moz-transition: -moz-transform 0.2s;
+    -moz-transition: -moz-transform 0.2s;
+    -o-transition: -o-transform 0.2s;
+    -ms-transition: -ms-transform 0.2s;
+}
+#SCloud .node-area .node-card .bottom-box .node-open-action .btn-open-action i.rotate-back {
+    transform-origin: center center;
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transition: transform 0.2s;
+    -moz-transition: -moz-transform 0.2s;
+    -moz-transition: -moz-transform 0.2s;
+    -o-transition: -o-transform 0.2s;
+    -ms-transition: -ms-transform 0.2s;
+}
+#SCloud .node-area .node-card .action-box {
+    padding: 15px 20px;
+    border-top: 1px solid #e6eaee;
+    display: none;
+    background-color: rgba(220, 237, 255, 0.07);
+}
+#SCloud .node-area .node-card .action-input {
+    margin-bottom: 10px;
+}
+#SCloud .node-area .node-card .action-input:last-child {
+    margin-bottom: 0px;
+}
+#SCloud .node-area .node-card .os-version {
+    padding: 5px 0px;
+}
+#SCloud .node-area .node-card .os-version label {
+    padding: 0px 10px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: #fceed4;
+    color: #ff9900;
+    margin-bottom: 5px;
+}
+#SCloud .node-area .node-card .os-warning {
+    color: #a3a3a3;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+}
+#SCloud .node-area .node-card .os-warning i {
+    color: #ff9900;
+    padding-right: 5px;
+}
+#SCloud .node-area .doc-card {
+    border: 1px solid #e6eaee;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: box-shadow .2s;
+    box-shadow: 1px 1px 22px rgba(135, 164, 194, 0.19);
+    margin-bottom: 10px;
+}
+#SCloud .node-area .doc-card .card-title span {
+    font-size: 15px;
+    color: #333333;
+    flex: 1;
+    font-weight: 600;
+}
+#SCloud .node-area .doc-card .card-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e6eaee;
+}
+#SCloud .node-area .doc-card .card-content {
+    padding: 10px 20px;
+    border-bottom: 1px solid #e6eaee;
+}
+#SCloud .node-area .doc-card .card-content .card-item {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #535353;
+    margin: 15px 0px;
+    transition: all .3s;
+    cursor: pointer;
+    overflow: auto;
+    white-space: nowrap;
+}
+#SCloud .node-area .doc-card .card-content .card-item::-webkit-scrollbar {
+    display: none;
+}
+#SCloud .node-area .doc-card .card-content .card-item i {
+    padding-right: 8px;
+}
+#SCloud .node-area .doc-card .card-content .card-item:hover {
+    color: #1a91eb;
+}
+#SCloud .node-area .doc-card .card-bottom {
+    padding: 10px 20px;
+}
+#SCloud .node-area .doc-card .card-bottom .bottom-item {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all .3s;
+    border-radius: 4px;
+    color: #1a91eb;
+}
+#SCloud .node-area .doc-card .card-bottom .bottom-item:hover {
+    background-color: rgba(214, 232, 248, 0.2);
+}
+#SCloud .node-area .doc-card .card-bottom .bottom-item span {
+    flex: 1;
+}
+#SCloud .node-area .doc-card .card-bottom .bottom-item i {
+
+}
+@media (max-width: 700px) {
+    #SCloud .product-box {
+        height: auto;
+    }
+    #SCloud .product-box.ips {
+        flex-direction: column;
+    }
+    #SCloud .ipset {
+        padding-right: 0px;
+        margin-right: 0px;
+        padding-bottom: 8px;
+        margin-bottom: 8px;
+        border-bottom: 1px solid #e6eaee;
+        border-right: none;
+    }
+    #SCloud .ip-list .ip-group {
+        height: auto;
+        overflow-y: unset;
+    }
+}
+@media (max-width: 991px) {
+    #SCloud .node-area .node-card .top-box .node-address-area {
+        padding: 10px 20px;
+        flex-direction: row;
+        justify-content:flex-start;
+    }
+    #SCloud .node-area .node-card .top-box .node-address-area .ip-address {
+        margin-right: 20px;
+    }
+    #SCloud .node-area .node-card .top-box .node-desc-area {
+        justify-content: flex-start;
+        padding: 10px 20px;
+    }
+    #SCloud .node-area .node-card .top-box .node-bandwidth-area {
+        justify-content: flex-start;
+        padding: 10px 20px;
+    }
+}

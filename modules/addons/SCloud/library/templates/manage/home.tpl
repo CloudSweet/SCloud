@@ -19,6 +19,7 @@
                 <thead>
                     <tr>
                         <th>节点ID</th>
+                        <th>节点国家</th>
                         <th>UUID</th>
                         <th>节点名称</th>
                         <th>节点类型</th>
@@ -34,6 +35,7 @@
                     {foreach $templates['nodes'] as $key => $value}
                         <tr>
                         <td>{$value['id']}</td>
+                        <td>{$value['value']->country}</td>
                         <td>{$value['value']->uuid}</td>
                         <td>{$value['value']->name}</td>
                         <td>{$value['type']}</td>
@@ -88,14 +90,14 @@
                 <div class="panel-body">
                     <div class="form-group">
                         <p>
-                            格式: <code>节点名称|节点UUID|节点类型|IP/域名|端口</code>
+                            格式: <code>节点名称|节点所在国家|节点UUID|节点类型|IP/域名|端口</code>
                         </p>
                         <form action="{$modulelink}" method="post" id="node_info">
                             <input type="hidden" name="action" value="node_info_edit">
                             <input type="hidden" name="id" value="{$templates['id']}">
                             <input type="hidden" name="sign" value="{$templates['sign']}">
                             <div class="form-group">
-                                <textarea class="form-control" rows="10" name="info">{$templates['node']->name}|{$templates['node']->uuid}|{$templates['node']->type}|{$templates['node']->ip}|{$templates['node']->port}</textarea>
+                                <textarea class="form-control" rows="10" name="info">{$templates['node']->name}|{$templates['node']->country}|{$templates['node']->uuid}|{$templates['node']->type}|{$templates['node']->ip}|{$templates['node']->port}</textarea>
                             </div>
                         </form>
                     </div>

@@ -1,0 +1,17 @@
+#SCloud .error-msg {
+    height: 400px;
+    text-align: center;
+}
+#SCloud .warning-img {
+    font-size: 80px;
+    text-align: center;
+    margin-top: 100px;
+}
+#SCloud .error-text {
+    color: #000;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}

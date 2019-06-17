@@ -49,6 +49,7 @@ if( !class_exists("Apps") ){
                 Schema::create("mod_SCloud_nodes", function(\Illuminate\Database\Schema\Blueprint $table){
                     $table->increments("id");
                     $table->string("uuid");
+                    $table->string("country");
                     $table->string("type");
                     $table->string("name")->nullable()->default("noname");
                     $table->string("ip")->nullable()->default("127.0.0.1");
@@ -109,6 +110,7 @@ if( !class_exists("Apps") ){
                 Schema::create("mod_SCloud_node_traffic_photo", function(\Illuminate\Database\Schema\Blueprint $table){
                     $table->increments("id");
                     $table->integer("nid");//nodeid
+                    $table->integer("uid");//userid
                     $table->integer("u")->default("0");
                     $table->integer("d")->default("0");
                     $table->date("created_at");

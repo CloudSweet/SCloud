@@ -157,7 +157,81 @@ if( !class_exists("Tools") ){
             return array_map("trimArray", $array);
         }
 
-        public function generateUUID()
+        public static function getIP()
+        {
+            if( isset($_SERVER) ) 
+            {
+                if( isset($_SERVER["HTTP_X_FORWARDED_FOR"]) ) 
+                {
+                    $arr = explode(",", $_SERVER["HTTP_X_FORWARDED_FOR"]);
+                    foreach( $arr as $ip ) 
+                    {
+                        $ip = trim($ip);
+                        if( $ip != "unknown" ) 
+                        {
+                            $realip = $ip;
+                            break;
+                        }
+
+                    }
+                }
+                else
+                {
+                    if( isset($_SERVER["HTTP_X_REAL_IP"]) ) 
+                    {
+                        $realip = $_SERVER["HTTP_X_REAL_IP"];
+                    }
+                    else
+                    {
+                        if( isset($_SERVER["HTTP_CLIENT_IP"]) ) 
+                        {
+                            $realip = $_SERVER["HTTP_CLIENT_IP"];
+                        }
+                        else
+                        {
+                            if( isset($_SERVER["REMOTE_ADDR"]) ) 
+                            {
+                                $realip = $_SERVER["REMOTE_ADDR"];
+                            }
+                            else
+                            {
+                                $realip = "0.0.0.0";
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+            else
+            {
+                if( getenv("HTTP_X_FORWARDED_FOR") ) 
+                {
+                    $realip = getenv("HTTP_X_FORWARDED_FOR");
+                }
+                else
+                {
+                    if( getenv("HTTP_CLIENT_IP") ) 
+                    {
+                        $realip = getenv("HTTP_CLIENT_IP");
+                    }
+                    else
+                    {
+                        $realip = getenv("REMOTE_ADDR");
+                    }
+
+                }
+
+            }
+
+            preg_match("/[\\d\\.]{7,15}/", $realip, $onlineip);
+            $realip = (!empty($onlineip[0]) ? $onlineip[0] : "0.0.0.0");
+            return $realip;
+        }
+
+        public static function generateUUID()
         {  
             $chars = md5(uniqid(mt_rand(), true));  
             $uuid  = substr($chars,0,8) . '-';  
@@ -168,7 +242,7 @@ if( !class_exists("Tools") ){
             return strtoupper($uuid);  
         }
 
-        public function getEnabled($enabled)
+        public static function getEnabled($enabled)
         {
             if( $enabled == "1" ) 
             {
@@ -181,7 +255,7 @@ if( !class_exists("Tools") ){
             return $status;
         }
 
-        public function getSuccessSmarty($vars, $text)
+        public static function getSuccessSmarty($vars, $text)
         {
             $smarty = Tools::getSmarty(
                 array( 
@@ -196,5 +270,46 @@ if( !class_exists("Tools") ){
             );
             return $smarty;
         }
+
+        public static function convertTraffic($number, $from, $to)
+        {
+            $to = strtolower($to);
+            $from = strtolower($from);
+            switch ($from) {
+            case 'gb':
+                switch ($to) {
+                case 'mb':
+                    return $number * 1024;
+                case 'bytes':
+                    return $number * 1073741824;
+                default:
+                }
+                return $number;
+                break;
+            case 'mb':
+                switch ($to) {
+                case 'gb':
+                    return $number / 1024;
+                case 'bytes':
+                    return $number * 1048576;
+                default:
+                }
+                return $number;
+                break;
+            case 'bytes':
+                switch ($to) {
+                case 'gb':
+                    return $number / 1073741824;
+                case 'mb':
+                    return $number / 1048576;
+                default:
+                }
+                return $number;
+                break;
+            default:
+            }
+            return $number;
+        }
+        
     }
 }

@@ -3,6 +3,7 @@
 <div class="tab-content">
     {include file='./manage/home.tpl'}
     {include file='./manage/groups.tpl'}
+    {include file='./manage/products.tpl'}
     {include file='./manage/log.tpl'}
     {include file='./manage/license.tpl'}
 </div>

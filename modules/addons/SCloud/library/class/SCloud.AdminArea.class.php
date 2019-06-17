@@ -5,7 +5,7 @@ class AdminArea
 {
 
     public static $actions = array( "node_info", "node_info_edit", "node_config", "node_config_edit", "group_info", "group_info_edit", "group_nodes", 
-    "group_nodes_edit" );
+    "group_nodes_edit", "product_groups", "product_groups_edit" );
 
     public static function checkUpdate()
     {
@@ -120,10 +120,10 @@ class AdminArea
                             throw new \Exception( "传入 ID 不存在于数据库中" );
                         }else{
                             $config = explode("|", $_REQUEST["info"]);
-                            if(count($config) != 5){
-                                throw new \Exception( "传入配置长度不为 5 ，请检查并重写" );
+                            if(count($config) != 6){
+                                throw new \Exception( "传入配置长度不为 6 ，请检查并重写" );
                             }else{
-                                Nodes::where("id", $nodeid)->update( array( "name" => $config[0], "uuid" => $config[1], "type" => $config[2], "ip" => $config[3], "port" => $config[4]) );
+                                Nodes::where("id", $nodeid)->update( array( "name" => $config[0], "country" => $config[1], "uuid" => $config[2], "type" => $config[3], "ip" => $config[4], "port" => $config[5]) );
                                 Log::log("AdminArea", "节点信息修改，节点 ID ：" . $nodeid );
                                 $smarty = Tools::getSuccessSmarty($vars, "节点信息更新成功");
                             }
@@ -304,10 +304,81 @@ class AdminArea
                             $nodes = substr( $nodes, 0, strlen($nodes) - 1 ); 
                             Groups::where("id", $groupid)->update( array( "updated_at" => \Carbon\Carbon::now(), "nodes" => $nodes ) );
                             Log::log("AdminArea", "分组节点修改，分组 ID ：" . $groupid );
-                            $smarty = Tools::getSuccessSmarty($vars, "分组信息更新成功");
+                            $smarty = Tools::getSuccessSmarty($vars, "分组节点更新成功");
                         }
                         break;
-                    
+                    case "product_groups":
+                        $productid = (int) Tools::safetyInput( $_REQUEST["id"] );
+                        if( empty($productid) ) 
+                        {
+                            throw new \Exception( "传入 ID 不存在" );
+                        }
+                        Tools::safetyCheck($_REQUEST["sign"], array( $productid ));
+                        $product = \WHMCS\Database\Capsule::table("tblproducts")->where("servertype", "SCloud")->where("id", $productid)->first();
+                        $groupNodes = explode("|", $product->configoption4);
+                        $groups = Groups::orderBy("id", "ASC")->get();
+                        $groupsOutput = array( );
+                        foreach ($groups as $key => $value) {
+                            $checked = false;
+                            if( in_array( $value['id'], $groupNodes ) ){
+                                $checked = true;
+                            }
+                            array_push(
+                                $groupsOutput, 
+                                array( 
+                                    "id" => $value['id'], 
+                                    "name" => $value['name'], 
+                                    "uuid" => $value['uuid'], 
+                                    "checked" => $checked
+                                )
+                            );
+                        }
+                        if(empty($product)){
+                            throw new \Exception( "传入 ID " . $productid . " 不存在于数据库中" );
+                        }else{
+                            $smarty = Tools::getSmarty(
+                                array( 
+                                    "dir" => realpath(__DIR__ . "/../templates"), 
+                                    "file" => "/manage", 
+                                    "vars" => array( 
+                                        "active" => "products",
+                                        "modulevars" => $vars, 
+                                        "modulename" => Apps::$modulename,
+                                        "templates" => array( 
+                                            "id" => $productid,
+                                            "sign" => $_REQUEST["sign"],
+                                            "groups" => $groupsOutput
+                                        ), 
+                                        "page" => array(
+                                            "name" => "product_groups"
+                                        )
+                                    ) 
+                                )
+                            );
+                        }
+                        break;
+                    case "product_groups_edit":
+                        $productid = (int) Tools::safetyInput( $_REQUEST["id"] );
+                        if( empty($productid) ) 
+                        {
+                            throw new \Exception( "传入 ID 不存在" );
+                        }
+
+                        Tools::safetyCheck($_REQUEST["sign"], array( $productid ));
+                        $product = \WHMCS\Database\Capsule::table("tblproducts")->where("servertype", "SCloud")->where("id", $productid)->first();
+                        if(empty($product)){
+                            throw new \Exception( "传入 ID 不存在于数据库中" );
+                        }else{
+                            $groups = "";
+                            foreach ($_REQUEST['groups'] as $key => $value) {
+                                $groups .= $value . "|";
+                            }
+                            $groups = substr( $groups, 0, strlen($groups) - 1 ); 
+                            \WHMCS\Database\Capsule::table("tblproducts")->where("id", $productid)->update( array( "configoption4" => $groups ) );
+                            Log::log("AdminArea", "产品分钟修改，产品 ID ：" . $productid );
+                            $smarty = Tools::getSuccessSmarty($vars, "产品分组更新成功");
+                        }
+                        break;   
                 }
             }
             else
@@ -364,6 +435,21 @@ class AdminArea
                         )
                     );
                 }
+                $products = \WHMCS\Database\Capsule::table("tblproducts")->where("servertype", "SCloud")->get();
+                $productsOutput = array(  );
+                foreach ( $products as $key => $value) {
+                    $productid = $value->id;
+                    $sign = Tools::safetyCheck("", array( $value->id ), true);
+                    array_push(
+                        $productsOutput, 
+                        array( 
+                            "id" => $productid, 
+                            "sign" => $sign,
+                            "users" => count(\WHMCS\Database\Capsule::table("tblhosting")->where("packageid", $value->id)->get()),
+                            "value" => $value
+                        )
+                    );
+                }
                 $smarty = Tools::getSmarty(
                     array( 
                         "dir" => realpath(__DIR__ . "/../templates"), 
@@ -375,7 +461,8 @@ class AdminArea
                             "info" => $info,
                             "templates" => array( 
                                 "nodes" => $nodesOutput,
-                                "groups" => $groupsOutput 
+                                "groups" => $groupsOutput,
+                                "products" => $productsOutput 
                             ), 
                             "page" => array(
                                 "name" => "home"
