@@ -143,7 +143,7 @@
                                     {foreach $value as $vvalue}
                                         <p>{$vvalue["type"]}</p>
                                         <div class="input-group">
-                                            <input id="subscribe-{$vvalue["id"]}" class="form-control" value="https://{$HTTP_HOST}/modules/servers/Scloud/api.php?sid={$serviceid}&token={$subscribe_token}&{$vvalue["entrance"]}" type="text" readonly="true" >
+                                            <input id="subscribe-{$vvalue["id"]}" class="form-control" value="{$subscribe_post_url}?sid={$serviceid}&token={$subscribe_token}&action=subscribe&{$vvalue["entrance"]}" type="text" readonly="true" >
                                             <span class="input-group-btn">
                                                 <button id="subscribe-{$vvalue["id"]}" data-clipboard-target="#subscribe-{$vvalue["id"]}" class="btn btn-primary copy-btn">复制</button>
                                             </span>

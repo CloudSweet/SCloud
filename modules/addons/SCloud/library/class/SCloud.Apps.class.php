@@ -27,16 +27,18 @@ if( !class_exists("Apps") ){
                 "author" => self::$author,
                 "language" => "english",
                 "fields" => array( 
-                    "option1" => array (
-                            "FriendlyName" => "2", 
-                            "Type" => "radio", 
-                            "Default" => "1",
-                            "Options" =>
-                                    array(
-                                       "123",
-                                       "456"
-                                    ), 
-                            "Description" => "233"),                             
+                    "subscribe_url" => array (
+                            "FriendlyName" => "订阅域名", 
+                            "Type" => "text", 
+                            "Default" => "https://" . $_SERVER['HTTP_HOST'],
+                            "Description" => "</br>订阅域名"
+                    ), 
+                    "subscribe_path" => array (
+                            "FriendlyName" => "订阅路径", 
+                            "Type" => "text", 
+                            "Default" => "/ScloudAPI/index.php",
+                            "Description" => "</br>订阅文件所在路径"
+                    ),                             
                 ));
             return $configarray;
         }

@@ -226,7 +226,6 @@ class Servers
                                 $aclass = new $class();
                                 $subscribe = $aclass::makeUrl(self::$params["password"], $value1);
                                 $classOutput[$class][] = array();
-                                //$subscribe = "<font color='green'>" . $value1['type'] . "</font>";
                             }
                             array_push(
                                 $nodesOutput,
@@ -247,7 +246,6 @@ class Servers
                         array( 
                             "id" => $value['id'], 
                             "name" => $value['name'], 
-                            "uuid" => $value['uuid'],
                             "nodes" => $nodesOutput
                         )
                     );
@@ -262,9 +260,17 @@ class Servers
                     $subscribe
                 );
             }
-            //var_dump($subscribeOutput);
-            //die();
-            //package_groups
+            $subscribe_post_url = "";
+            $addonURLSettings = \WHMCS\Database\Capsule::table("tbladdonmodules")->where("module", "SCloud")->where("setting", "subscribe_url")->first();
+            $addonPathSettings = \WHMCS\Database\Capsule::table("tbladdonmodules")->where("module", "SCloud")->where("setting", "subscribe_path")->first();
+            if(!$addonURLSettings || !$addonPathSettings)
+            {
+                $subscribe_post_url = "获取数据库信息出错";
+            }
+            else
+            {
+                $subscribe_post_url = $addonURLSettings->value . $addonPathSettings->value;
+            }
 
             return array( 
                 "tabOverviewReplacementTemplate" => "templates/client.tpl", 
@@ -273,7 +279,7 @@ class Servers
                     "subscribe" => $subscribeOutput, 
                     "notice" => $package_notice, 
                     "document" => $package_document, 
-                    'HTTP_HOST' => $_SERVER['HTTP_HOST'],
+                    'subscribe_post_url' => $subscribe_post_url,
                     "subscribe_token" => md5(self::$params["password"]),
                     "templates" => array( 
                         "client_ip" => Tools::getIP(),
