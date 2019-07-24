@@ -62,6 +62,14 @@
                                         编辑节点配置文件
                                     </button>
                                 </form>
+                                <form action="{$modulelink}" method="post" style="margin: 0;">
+                                    <input name="action" value="node_advanced_config" type="hidden">
+                                    <input name="id" value="{$value['id']}" type="hidden">
+                                    <input name="sign" value="{$value['sign']}" type="hidden">
+                                    <button type="submit" class="btn btn-warning btn-xs"{if !$value['status']} disabled="disabled"{/if}>
+                                        编辑节点高级配置文件
+                                    </button>
+                                </form>
                                 <button class="btn btn-xs btn-primary autoset" onClick="javascript:node_status_change('{$value['id']}', '{$value['sign']}');">启用/禁用</button>
                                 <button class="btn btn-xs btn-danger autohides" onClick="javascript:node_delete('{$value['id']}', '{$value['sign']}');">删除</button>
                             </div>
@@ -126,6 +134,30 @@
                         </form>
                     </div>
                     <button onclick="javascript:if(confirm('这将会覆盖原来数据库中的信息')) document.getElementById('node_config').submit();" class="btn btn-warning"><span class="glyphicon glyphicon-open" aria-hidden="true"></span> 提交修改</button>
+                </div>
+            </div>
+        </div>
+    {elseif $page['name'] eq 'node_advanced_config'}
+        <div class="home-body">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title">编辑节点高级配置文件</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <p>
+                            格式: <code>高级节点配置文件</code>
+                        </p>
+                        <form action="{$modulelink}" method="post" id="node_advanced_config">
+                            <input type="hidden" name="action" value="node_advanced_config_edit">
+                            <input type="hidden" name="id" value="{$templates['id']}">
+                            <input type="hidden" name="sign" value="{$templates['sign']}">
+                            <div class="form-group">
+                                <textarea class="form-control" rows="10" name="info">{$templates['node']->advancedconfigoptiontable}</textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <button onclick="javascript:if(confirm('这将会覆盖原来数据库中的信息')) document.getElementById('node_advanced_config').submit();" class="btn btn-warning"><span class="glyphicon glyphicon-open" aria-hidden="true"></span> 提交修改</button>
                 </div>
             </div>
         </div>

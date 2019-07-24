@@ -9,7 +9,7 @@
 <div id="SCloud">
     <div class="row">
         <div class="col-md-12">
-            {if $notice|@count neq 0 && $document != ""}
+            {if $notice|@count neq 0}
             <div class="notice-area">
                 <div class="notice-box">
                     {foreach $notice as $value}
@@ -77,7 +77,7 @@
             </div>
             <div class="node-area">
                 <div class="row">
-                    <div class="{if $document|@count eq 0 || $document == ""}col-sm-12{else}col-lg-8 col-md-12{/if} col-xs-12 col-12">
+                    <div class="{if $document|@count eq 0}col-sm-12{else}col-lg-8 col-md-12{/if} col-xs-12 col-12">
                         {foreach $node as $key => $value}
                             {foreach $value['nodes'] as $k => $v}
                                 <div class="node-card" id="node-{$value["id"]}-{$v["id"]}">
@@ -116,21 +116,46 @@
                                         </div>
                                     </div>
                                     <div class="action-box">
-                                        <div class="action-input">
-                                            <label for=""> aaa</label>
-                                            <div class="input-group">
-                                                <input id="linux-{$value["id"]}-{$v["id"]}" class="form-control" value="aaaa" type="text" readonly="true">
-                                                <span class="input-group-btn">
-                                                    <button id="linux-btn-{$key}" data-clipboard-target="#linux-{$value["id"]}-{$v["id"]}" class="btn btn-primary copy-btn">复制</button>
-                                                </span>
+                                        {foreach $v["subscribe"] as $key => $subvalue}
+                                            <div class="action-input">
+                                                <label for=""> {$subvalue["type"]}</label>
+                                                <div class="input-group">
+                                                    <input id="url-{$value["id"]}-{$v["id"]}-{$subvalue["type"]}" class="form-control" value="{$subvalue["subscribe"]}" type="text" readonly="true">
+                                                    <span class="input-group-btn">
+                                                        <button id="url-btn-{$key}" data-clipboard-target="#url-{$value["id"]}-{$v["id"]}-{$subvalue["type"]}" class="btn btn-primary copy-btn">复制</button>
+                                                    </span>
+                                                </div>
                                             </div>
-                                        </div>
+                                        {/foreach}
                                     </div>
                                 </div>
                             {/foreach}
                         {/foreach}
                     </div>
-                    {if $document|@count neq 0 && $document != ""}
+                    {if $subscribe|@count neq 0}
+                    <div class="col-lg-4 col-md-12 col-xs-12 col-12">
+                        <div class="doc-card">
+                            <div class="card-title">
+                                <span>订阅链接</span>
+                            </div>
+                            <div class="card-content">
+                                {foreach $subscribe as $value}
+                                    {foreach $value as $vvalue}
+                                        <p>{$vvalue["type"]}</p>
+                                        <div class="input-group">
+                                            <input id="subscribe-{$vvalue["id"]}" class="form-control" value="https://{$HTTP_HOST}/modules/servers/Scloud/api.php?sid={$serviceid}&token={$subscribe_token}&{$vvalue["entrance"]}" type="text" readonly="true" >
+                                            <span class="input-group-btn">
+                                                <button id="subscribe-{$vvalue["id"]}" data-clipboard-target="#subscribe-{$vvalue["id"]}" class="btn btn-primary copy-btn">复制</button>
+                                            </span>
+                                        </div>
+                                        </br>
+                                    {/foreach}
+                                {/foreach}
+                            </div>
+                        </div>
+                    </div>
+                    {/if}
+                    {if $document|@count neq 0}
                     <div class="col-lg-4 col-md-12 col-xs-12 col-12">
                         <div class="doc-card">
                             <div class="card-title">

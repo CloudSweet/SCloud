@@ -56,7 +56,8 @@ if( !class_exists("Apps") ){
                     $table->integer("port")->nullable();
                     $table->integer("enabled")->default("0");
                     $table->integer("transferMode")->default("0");
-                    $table->string("configoptiontable")->nullable();
+                    $table->text("configoptiontable")->nullable();
+                    $table->text("advancedconfigoptiontable")->nullable();
                     $table->integer("u")->default("0");
                     $table->integer("d")->default("0");
                     $table->date("created_at");

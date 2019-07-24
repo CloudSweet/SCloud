@@ -11,8 +11,8 @@
             <li role="presentation" class="hidden-xs {if $active == "home"}active{/if}"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">设置节点</a></li>
             <li role="presentation" class="hidden-xs {if $active == "groups"}active{/if}"><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab">节点分配</a></li>
             <li role="presentation" class="hidden-xs {if $active == "products"}active{/if}"><a href="#products" aria-controls="products" role="tab" data-toggle="tab">产品分配</a></li>
-            <li role="presentation" class="hidden-xs"><a href="#transfer" aria-controls="transfer" role="tab" data-toggle="tab">转发管理</a></li>
-            <li role="presentation" class="hidden-xs"><a href="#record" aria-controls="record" role="tab" data-toggle="tab">转发记录</a></li>
+            <!--<li role="presentation" class="hidden-xs"><a href="#transfer" aria-controls="transfer" role="tab" data-toggle="tab">转发管理</a></li>
+            <li role="presentation" class="hidden-xs"><a href="#record" aria-controls="record" role="tab" data-toggle="tab">转发记录</a></li>-->
             <li role="presentation" class="hidden-xs"><a href="#log" aria-controls="log" role="tab" data-toggle="tab">操作记录</a></li>
             <li role="presentation" class="hidden-xs"><a href="#traffic" aria-controls="traffic" role="tab" data-toggle="tab">流量记录</a></li>
             <li role="presentation" class="hidden-xs"><a href="#about" aria-controls="about" role="tab" data-toggle="tab">授权信息</a></li>
@@ -25,8 +25,8 @@
         <li role="presentation" {if $active == "home"}class="active"{/if}><a href="#home" aria-controls="home" role="tab" data-toggle="tab">设置节点</a></li>
         <li role="presentation" {if $active == "groups"}class="active"{/if}><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab">节点分配</a></li>
         <li role="presentation" {if $active == "products"}class="active"{/if}><a href="#products" aria-controls="products" role="tab" data-toggle="tab">产品分配</a></li>
-        <li role="presentation"><a href="#transfer" aria-controls="transfer" role="tab" data-toggle="tab">转发管理</a></li>
-        <li role="presentation"><a href="#record" aria-controls="record" role="tab" data-toggle="tab">转发记录</a></li>
+        <!--<li role="presentation"><a href="#transfer" aria-controls="transfer" role="tab" data-toggle="tab">转发管理</a></li>
+        <li role="presentation"><a href="#record" aria-controls="record" role="tab" data-toggle="tab">转发记录</a></li>-->
         <li role="presentation"><a href="#log" aria-controls="log" role="tab" data-toggle="tab">操作记录</a></li>
         <li role="presentation"><a href="#traffic" aria-controls="traffic" role="tab" data-toggle="tab">流量记录</a></li>
         <li role="presentation"><a href="#about" aria-controls="about" role="tab" data-toggle="tab">授权信息</a></li>

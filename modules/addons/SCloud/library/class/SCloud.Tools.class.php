@@ -154,7 +154,7 @@ if( !class_exists("Tools") ){
                 return trim($array);
             }
 
-            return array_map("trimArray", $array);
+            return array_map(array( "CloudSweet\\SCloud\\Tools", "trimArray" ), $array);
         }
 
         public static function getIP()

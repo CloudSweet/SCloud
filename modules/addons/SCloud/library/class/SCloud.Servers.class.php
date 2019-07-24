@@ -51,17 +51,17 @@ class Servers
             ),
             "Notices" => array( 
                 "FriendlyName" => "产品公告", 
-                "Type" => "text",
+                "Type" => "textarea",
                 "Rows" => "3", 
                 "Cols" => "25",
-                "Description" => "<br />添加格式: <code>产品公告</code>, 每行一个公告，留空不显示", "Default" => "" 
+                "Description" => "添加格式: <code>产品公告</code>, 每行一个公告，留空不显示", "Default" => "" 
             ),
             "Documents" => array( 
                 "FriendlyName" => "产品文档", 
-                "Type" => "text",
+                "Type" => "textarea",
                 "Rows" => "3", 
                 "Cols" => "25",
-                "Description" => "<br />添加格式: <code>产品文档|文档链接</code>, 每行一个文档，留空不显示", "Default" => "" 
+                "Description" => "添加格式: <code>产品文档|文档链接</code>, 每行一个文档，留空不显示", "Default" => "" 
             ),
         );
     }
@@ -203,24 +203,40 @@ class Servers
             $uploaded = floor(Tools::convertTraffic($product->diskusage, 'bytes', 'mb'));
             $downloaded = floor(Tools::convertTraffic($product->bwusage, 'bytes', 'mb'));
             $lefted = floor(Tools::convertTraffic(self::$params['configoption1'] - $uploaded - $downloaded, 'mb', 'gb'));
-            
+
             $groupNodes = explode("|", $package_groups);
             $groups = Groups::orderBy("id", "ASC")->get();
             $groupsOutput = array( );
+            $classOutput = array( );
             foreach ($groups as $key => $value) {
                 if( in_array( $value['id'], $groupNodes ) ){
                     $groupNodes = explode("|", $value['nodes']);
                     $nodes = Nodes::orderBy("id", "ASC")->get();
                     $nodesOutput = array( );
                     foreach ($nodes as $key1 => $value1) {
-                        if( in_array( $value1['id'], $groupNodes ) ){    
+                        if( in_array( $value1['id'], $groupNodes ) ){
+                            $class = "";
+                            if( !class_exists("CloudSweet\\SCloud\\nodes\\" . $value1['type']) )
+                            {
+                                $subscribe = array(array("type" => "订阅链接错误", "subscribe" => "(模块不存在)"));
+                            }
+                            else
+                            {
+                                $class = "CloudSweet\\SCloud\\nodes\\" . $value1['type'];
+                                $aclass = new $class();
+                                $subscribe = $aclass::makeUrl(self::$params["password"], $value1);
+                                $classOutput[$class][] = array();
+                                //$subscribe = "<font color='green'>" . $value1['type'] . "</font>";
+                            }
                             array_push(
-                                $nodesOutput, 
+                                $nodesOutput,
                                 array( 
                                     "id" => $value1['id'], 
                                     "name" => $value1['name'], 
                                     "uuid" => $value1['uuid'], 
                                     "country" => $value1['country'], 
+                                    "subscribe" => $subscribe,
+                                    "class" => $class,
                                     "values" => $value1,
                                 )
                             );
@@ -237,15 +253,28 @@ class Servers
                     );
                 }
             }
-            //var_dump($groupsOutput);
+            $subscribeOutput = array( );
+            foreach ($classOutput as $key => $value) {
+                $class = new $key();
+                $subscribe = $class::makeSubscribeUrl();
+                array_push(
+                    $subscribeOutput,
+                    $subscribe
+                );
+            }
+            //var_dump($subscribeOutput);
+            //die();
             //package_groups
 
             return array( 
                 "tabOverviewReplacementTemplate" => "templates/client.tpl", 
                 "templateVariables" => array( 
                     "node" => $groupsOutput, 
+                    "subscribe" => $subscribeOutput, 
                     "notice" => $package_notice, 
                     "document" => $package_document, 
+                    'HTTP_HOST' => $_SERVER['HTTP_HOST'],
+                    "subscribe_token" => md5(self::$params["password"]),
                     "templates" => array( 
                         "client_ip" => Tools::getIP(),
                         "bandwidth" => $package_bandwidth,

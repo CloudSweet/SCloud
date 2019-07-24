@@ -4,7 +4,7 @@ namespace CloudSweet\SCloud;
 class AdminArea
 {
 
-    public static $actions = array( "node_info", "node_info_edit", "node_config", "node_config_edit", "group_info", "group_info_edit", "group_nodes", 
+    public static $actions = array( "node_info", "node_info_edit", "node_config", "node_config_edit", "node_advanced_config", "node_advanced_config_edit", "group_info", "group_info_edit", "group_nodes", 
     "group_nodes_edit", "product_groups", "product_groups_edit" );
 
     public static function checkUpdate()
@@ -177,6 +177,56 @@ class AdminArea
                             Nodes::where("id", $nodeid)->update( array( "configoptiontable" => $_REQUEST["info"] ) );
                             Log::log("AdminArea", "节点配置文件修改，节点 ID ：" . $nodeid );
                             $smarty = Tools::getSuccessSmarty($vars, "配置文件更新成功");
+                        }
+                        break;
+                    case "node_advanced_config":
+                        $nodeid = (int) Tools::safetyInput( $_REQUEST["id"] );
+                        if( empty($nodeid) ) 
+                        {
+                            throw new \Exception( "传入 ID 不存在" );
+                        }
+
+                        Tools::safetyCheck($_REQUEST["sign"], array( $nodeid ));
+                        $node = Nodes::where("id", $nodeid)->first();
+                        if(empty($node)){
+                            throw new \Exception( "传入 ID 不存在于数据库中" );
+                        }else{
+                            $smarty = Tools::getSmarty(
+                                array( 
+                                    "dir" => realpath(__DIR__ . "/../templates"), 
+                                    "file" => "/manage", 
+                                    "vars" => array( 
+                                        "active" => "home",
+                                        "modulevars" => $vars, 
+                                        "modulename" => Apps::$modulename,
+                                        "templates" => array( 
+                                            "id" => $nodeid,
+                                            "sign" => $_REQUEST["sign"],
+                                            "node" => $node 
+                                        ), 
+                                        "page" => array(
+                                            "name" => "node_advanced_config"
+                                        )
+                                    ) 
+                                )
+                            );
+                        }
+                        break;
+                    case "node_advanced_config_edit":
+                        $nodeid = (int) Tools::safetyInput( $_REQUEST["id"] );
+                        if( empty($nodeid) ) 
+                        {
+                            throw new \Exception( "传入 ID 不存在" );
+                        }
+
+                        Tools::safetyCheck($_REQUEST["sign"], array( $nodeid ));
+                        $node = Nodes::where("id", $nodeid)->first();
+                        if(empty($node)){
+                            throw new \Exception( "传入 ID 不存在于数据库中" );
+                        }else{
+                            Nodes::where("id", $nodeid)->update( array( "advancedconfigoptiontable" => $_REQUEST["info"] ) );
+                            Log::log("AdminArea", "节点高级配置文件修改，节点 ID ：" . $nodeid );
+                            $smarty = Tools::getSuccessSmarty($vars, "高级配置文件更新成功");
                         }
                         break;
                     case "group_info":
@@ -401,9 +451,12 @@ class AdminArea
                             $transferMode = "只允许中转";
                             break;
                     }
-                    if( !class_exists("CloudSweet\\SCloud\\nodes\\" . $value->type) ){
+                    if( !class_exists("CloudSweet\\SCloud\\nodes\\" . $value->type) )
+                    {
                         $type = "<font color='red'>" . $value->type . "</font></br>(模块不存在)";
-                    }else{
+                    }
+                    else
+                    {
                         $type = "<font color='green'>" . $value->type . "</font>";
                     }
                     array_push(
