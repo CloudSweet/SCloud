@@ -1,6 +1,5 @@
 <?php
 namespace CloudSweet\SCloud\nodes;
-use WHMCS\Database\Capsule;
 
 if( !class_exists("v2ray_vmess") ){
     class v2ray_vmess
